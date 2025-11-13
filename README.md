@@ -1,5 +1,6 @@
 # MensaRater
-A simple web app to rate dishes at school/university mensas and cafetarias in Germany/Austria.  
+A simple web app to rate dishes at school/university mensas and cafetarias in Germany/Austria.
+
 The current release is deployed at [mensarater.web.app](https://mensarater.web.app)
 
 ![](images/overview.png)
@@ -18,7 +19,7 @@ I then continued to work on the app as a hobby project and kept adding new featu
 - Filter for dish categories
 - Switch between selected mensas/cafeterias
 
-## Supported Mensas/cafeterias
+## Supported Mensas/Cafeterias
 Currently, the app provides support for the following mensas/cafeterias:
 - Mensa University of Passau
 - Mensa TH Deggendorf
@@ -26,5 +27,5 @@ Currently, the app provides support for the following mensas/cafeterias:
 
 If there is the interest of adding a new specific mensa, please contact me.
 
-## Data source
+## Data Source
 The datasource for the menu data used in the app is the [OpenMensa](https://openmensa.org) project which provides a very convenient REST api for the majority of mensas/cafeterias in Germany and other European countries.
