@@ -31,4 +31,4 @@ If there is the interest of adding a new specific mensa, please contact me.
 The datasource for the menu data used in the app is the [OpenMensa](https://openmensa.org) project which provides a very convenient REST api for the majority of mensas/cafeterias in Germany and other European countries.
 
 ## Code
-The source code for this app is currently placed in a private repository on GitLab but I plan to make it fully open source in this project at some point in the future.
+The source code for this app is currently placed in a private repository on GitLab but I plan to make it fully open source in this GitHub project at some point in the future.
