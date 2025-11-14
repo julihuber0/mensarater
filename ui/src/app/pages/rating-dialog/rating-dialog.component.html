@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{ dish.dishName }}</h1>
+<div mat-dialog-content>
+  <div class="flex-container">
+    <form [formGroup]="ratingForm">
+      <mat-card appearance="outlined" class="rating-card">
+        <mat-slider min="0" max="10" step="1" showTickMarks discrete>
+          <input matSliderThumb formControlName="rating">
+        </mat-slider>
+      <mat-label class="rating-title">Bewertung</mat-label>
+      </mat-card>
+      <mat-checkbox formControlName="warning" class="warn-check">Warnung</mat-checkbox>
+    </form>
+  </div>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-stroked-button mat-dialog-close>Abbrechen</button>
+  <button mat-stroked-button mat-dialog-close [disabled]="ratingForm.invalid" (click)="onSave()">Speichern</button>
+</div>

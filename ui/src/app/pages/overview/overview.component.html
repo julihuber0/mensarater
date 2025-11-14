@@ -1,0 +1,95 @@
+@if (selectedMensa) {
+<mat-card class="collect-card">
+  <div class="mensa-display">
+    <h2>{{ selectedMensa.name }}</h2>
+      <button mat-raised-button (click)="openSettingsDialog()">Ändern</button>
+  </div>
+</mat-card>
+}
+
+<mat-menu #filterMenu="matMenu">
+  <div class="filter-menu">
+    <span>Aktive Kategorien:</span>
+    @if (activeFilter().length === 0) {
+      <span>Keine Filter aktiv.</span>
+    }
+    <mat-chip-set>
+      @for (category of activeFilter(); track category) {
+        <mat-chip removable (click)="$event.stopPropagation()" (removed)="removeFilter(category)">
+          {{ category }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      }
+    </mat-chip-set>
+    <mat-divider></mat-divider>
+    <span>Verfügbare Kategorien:</span>
+    <mat-chip-set>
+      @for (category of allCategories(); track category) {
+        <mat-chip (click)="$event.stopPropagation(); addFilter(category)">
+          {{ category }}
+        </mat-chip>
+      }
+    </mat-chip-set>
+  </div>
+</mat-menu>
+
+<mat-card class="collect-card">
+  <div class="rate-mode-toggle">
+    <mat-button-toggle-group [(ngModel)]="rateMode" (change)="getTableData()">
+      <mat-button-toggle value="avg">Durchschnitt</mat-button-toggle>
+      @if (authService.loggedIn) {
+        <mat-button-toggle value="user">Benutzer</mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+  </div>
+  <div class="card-header">
+    <div class="card-left">
+    <span class="date-header">{{ selectedDate() | date: 'shortDate' }}</span>
+  <div class="calendar-navigation">
+    <button mat-icon-button (click)="prevDay()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button (click)="setToday()">
+      <mat-icon>today</mat-icon>
+    </button>
+    <button mat-icon-button (click)="nextDay()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+      @if (menuData().length > 0) {
+        <button class="filter-menu-button" mat-icon-button [matBadge]="activeFilter().length"
+                matBadgeHidden="{{activeFilter().length === 0}}"
+                [matMenuTriggerFor]="filterMenu" aria-label="Filter Kategorien">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+      }
+    </div>
+  </div>
+  <div class="rate-mode-toggle-mobile">
+    <mat-button-toggle-group [(ngModel)]="rateMode" (change)="getTableData()">
+      <mat-button-toggle class="button-toggle" value="avg">Durchschnitt</mat-button-toggle>
+      @if (authService.loggedIn) {
+        <mat-button-toggle class="button-toggle" value="user">Benutzer</mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+  </div>
+<div class="dish-layout">
+  @if (!loading) {
+    @for (dish of filteredMenuData(); track dish.dishName) {
+      <div class="dish-card">
+        <app-dish-card [dish]="dish" [canRate]="authService.loggedIn" (rateButtonEmitter)="onClickDish($event)"></app-dish-card>
+      </div>
+    } @empty {
+      <div class="no-dishes">
+        <p>Kein Menü für den gewählten Tag vorhanden!</p>
+      </div>
+    }
+  } @else {
+    @for (item of [1,2,3,4]; track item) {
+      <div class="dish-card">
+        <app-skeleton-card></app-skeleton-card>
+      </div>
+    }
+  }
+</div>
+</mat-card>

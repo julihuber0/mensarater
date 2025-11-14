@@ -1,0 +1,39 @@
+<mat-toolbar class="header-toolbar">
+  <div class="logo-container">
+    @if (!darkModeToggled) {
+      <img src="assets/icons/logo_light.svg" alt="logo_light" class="header-logo"/>
+    } @else {
+      <img src="assets/icons/logo_dark.svg" alt="logo_dark" class="header-logo"/>
+    }
+  </div>
+  <span class="spacer"></span>
+    @if (darkModeToggled) {
+      <button mat-icon-button class="mode-button" (click)="onToggleDarkMode()">
+        <mat-icon>sunny</mat-icon>
+      </button>
+    } @else {
+      <button mat-icon-button class="mode-button" (click)="onToggleDarkMode()">
+        <mat-icon>mode_night</mat-icon>
+      </button>
+    }
+  @if (authService.loggedIn) {
+    <mat-chip>
+      <div class="user-chip">
+      <mat-icon class="user-icon">account_circle</mat-icon>
+      {{ authService.getUserName()() }}
+      </div>
+    </mat-chip>
+    <span class="spacer-logout"></span>
+    <span>
+    <button mat-stroked-button class="sign-out" (click)="authService.logout()">
+      Abmelden
+      <mat-icon>logout</mat-icon>
+    </button>
+      <button mat-icon-button class="sign-out-mobile" (click)="authService.logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </span>
+  } @else {
+    <button mat-raised-button (click)="authService.login()">Anmelden</button>
+  }
+</mat-toolbar>

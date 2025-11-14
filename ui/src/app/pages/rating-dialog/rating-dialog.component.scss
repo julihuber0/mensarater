@@ -1,0 +1,26 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.mat-mdc-slider {
+  max-width: 280px;
+  width: 100%;
+}
+
+.rating-title {
+  font-weight: bolder;
+  margin-bottom: 0.5rem;
+}
+
+.rating-card {
+  margin: 1.5rem 0 1.5rem 0;
+  width: 300px;
+}
+
+.warn-check {
+  padding-bottom: 1rem;
+}

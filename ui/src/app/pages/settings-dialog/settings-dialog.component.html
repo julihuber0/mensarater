@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Mensa auswählen</h1>
+<div mat-dialog-content>
+  <div class="flex-container">
+    <form [formGroup]="settingsForm">
+      <mat-form-field appearance="outline" class="select-field">
+        <mat-label>Mensa-Auswahl</mat-label>
+        <mat-select formControlName="mensa">
+          @for (mensa of availableMensas; track $index) {
+            <mat-option [value]="mensa">{{ mensa.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-stroked-button mat-dialog-close [disabled]="settingsForm.invalid">Abbrechen</button>
+  <button mat-stroked-button mat-dialog-close [disabled]="settingsForm.invalid" (click)="onSave()">Speichern</button>
+</div>

@@ -1,0 +1,19 @@
+<div class="card-container">
+<mat-card appearance="outlined" class="dish-card" [ngClass]="dish.warning ? 'warning' : ''">
+  <mat-card-content>
+    <div class="title-width">
+      {{ dish.dishName }}
+      <span>Kategorie: {{ dish.category }}</span>
+    </div>
+    <mat-chip class="price-position">{{ dish.price | price }}</mat-chip>
+    @if (dish.rating !== -1) {
+    <mat-chip class="rating-position" [ngClass]="ratingClass">{{ dish.rating | rating }}</mat-chip>
+    }
+  </mat-card-content>
+  @if (canRate) {
+  <mat-card-actions>
+      <button mat-stroked-button (click)="onClickRate()">Bewerten</button>
+  </mat-card-actions>
+  }
+</mat-card>
+</div>

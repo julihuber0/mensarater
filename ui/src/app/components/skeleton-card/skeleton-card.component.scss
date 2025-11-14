@@ -1,0 +1,17 @@
+.card-container {
+  margin: 1rem;
+}
+
+.dark-loader {
+  display: none;
+}
+
+:host-context(.dark) {
+  .light-loader {
+    display: none;
+  }
+
+  .dark-loader {
+    display: block !important;
+  }
+}

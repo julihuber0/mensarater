@@ -1,0 +1,66 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spacer-logout {
+  flex: 0 1 auto;
+  padding-left: 0.625rem;
+}
+
+.sign-out {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.sign-out-mobile {
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+.sign-out-span {
+  padding-right: 2rem;
+}
+
+.sign-out:hover {
+  color: var(--mat-sys-tertiary);
+  cursor: pointer;
+}
+
+:host-context(.dark) {
+  .sign-out:hover {
+    color: darkseagreen;
+    cursor: pointer;
+  }
+}
+
+.dark-mode-toggle {
+  margin-right: 1rem;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-icon {
+  transform: scale(0.8) translateX(0);
+  margin-right: 0.25rem;
+  margin-left: -0.25rem;
+}
+
+.mode-button {
+  margin-right: 0.5rem;
+}
+
+.header-logo {
+  height: 100%;
+}
+
+.logo-container {
+  height: 4rem;
+  position: absolute;
+  left: 0;
+}
