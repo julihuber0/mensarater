@@ -1,0 +1,15 @@
+groups:
+  default:
+    targets:
+      - backend
+
+targets:
+  backend:
+    context: ./backend
+    dockerfile: ./backend/Dockerfile
+    platforms:
+      - linux/amd64
+      - linux/arm64
+    tags:
+      - itzthedockerjules/mensarater:backend-${VERSION}
+      - itzthedockerjules/mensarater:backend-latest
