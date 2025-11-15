@@ -5,8 +5,14 @@ group "default" {
 target "backend" {
   context = "./backend"
     dockerfile = "Dockerfile"
-    tags = ["itzthedockerjules/mensarater:backend-${VERSION}", "itzthedockerjules/mensarater:backend-latest"]
-    platforms = ["linux/amd64", "linux/arm64"]
+    tags = [
+      "itzthedockerjules/mensarater:backend-${VERSION}",
+      "itzthedockerjules/mensarater:backend-latest",
+    ]
+    platforms = [
+      "linux/amd64",
+      "linux/arm64"
+    ]
 }
 
 variable "VERSION" {

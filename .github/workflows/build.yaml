@@ -33,4 +33,4 @@ jobs:
           source: .
           push: 'true'
           no-cache: 'true'
-          files: docker-bake.yml
+          files: docker-bake.hcl
