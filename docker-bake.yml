@@ -1,9 +1,9 @@
-group:
+groups:
   default:
     targets:
       - backend
 
-target:
+targets:
   backend:
     context: ./backend
     dockerfile: ./backend/Dockerfile
@@ -11,5 +11,5 @@ target:
       - linux/amd64
       - linux/arm64
     tags:
-      - itzthedockerjules/mensarater:backend-${VERSION}
+      - itzthedockerjules/mensarater:backend-0.1.0
       - itzthedockerjules/mensarater:backend-latest
