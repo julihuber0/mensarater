@@ -5,11 +5,11 @@ groups:
 
 targets:
   backend:
-    context: ./backend
-    dockerfile: ./backend/Dockerfile
+    context: "./backend"
+    dockerfile: "./backend/Dockerfile"
     platforms:
-      - linux/amd64
-      - linux/arm64
+      - "linux/amd64"
+      - "linux/arm64"
     tags:
-      - itzthedockerjules/mensarater:backend-0.1.0
-      - itzthedockerjules/mensarater:backend-latest
+      - "itzthedockerjules/mensarater:backend-0.1.0"
+      - "itzthedockerjules/mensarater:backend-latest"
