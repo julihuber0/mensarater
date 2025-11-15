@@ -6,7 +6,7 @@ groups:
 targets:
   backend:
     context: ./backend
-    dockerfile: ./backend/Dockerfile
+    dockerfile: Dockerfile
     platforms:
       - linux/amd64
       - linux/arm64
