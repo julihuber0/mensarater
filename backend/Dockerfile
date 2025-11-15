@@ -3,7 +3,7 @@ EXPOSE 8080
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests --quiet
 
 FROM docker.io/library/eclipse-temurin:25-jre-alpine
 EXPOSE 8080
