@@ -1,9 +1,9 @@
-groups:
+group:
   default:
     targets:
       - backend
 
-targets:
+target:
   backend:
     context: ./backend
     dockerfile: ./backend/Dockerfile
