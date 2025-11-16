@@ -78,10 +78,14 @@ jobs:
           name: frontend-build-${{ env.RELEASE_TAG }}
           path: firebase
 
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
+      - name: debug
+        run: |
+          cat "$GOOGLE_APPLICATION_CREDENTIALS"
 
-      - name: Deploy to Firebase
-        run: | 
-          cd firebase
-          firebase deploy --project mensarater
+      #- name: Install Firebase CLI
+      #  run: npm install -g firebase-tools
+
+      #- name: Deploy to Firebase
+      #  run: |
+      #    cd firebase
+      #    firebase deploy --project mensarater
