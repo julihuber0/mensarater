@@ -1,13 +1,22 @@
-group "default" {
-  targets = ["backend"]
-}
-
 target "backend" {
   context = "./backend"
     dockerfile = "Dockerfile"
     tags = [
       "itzthedockerjules/mensarater:backend-${VERSION}",
       "itzthedockerjules/mensarater:backend-latest",
+    ]
+    platforms = [
+      "linux/amd64",
+      "linux/arm64"
+    ]
+}
+
+target "frontend" {
+  context = "./ui"
+    dockerfile = "Dockerfile"
+    tags = [
+      "itzthedockerjules/mensarater:frontend-${VERSION}",
+      "itzthedockerjules/mensarater:frontend-latest",
     ]
     platforms = [
       "linux/amd64",
