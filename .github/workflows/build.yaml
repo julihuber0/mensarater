@@ -68,7 +68,6 @@ jobs:
       - name: Create Google service account key file and firebase config
         run: |
           echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}' > service-account-key.json
-          export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-account-key.json
           mkdir firebase
           echo '${{ vars.FIREBASE_CONFIG }}' > firebase/firebase.json
 
@@ -80,6 +79,7 @@ jobs:
 
       - name: debug
         run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-account-key.json
           cat "$GOOGLE_APPLICATION_CREDENTIALS"
 
       #- name: Install Firebase CLI
@@ -87,5 +87,6 @@ jobs:
 
       #- name: Deploy to Firebase
       #  run: |
+      #    export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-account-key.json
       #    cd firebase
       #    firebase deploy --project mensarater
