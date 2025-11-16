@@ -6,6 +6,6 @@ export const localhostUrlCondition = createInterceptorCondition<IncludeBearerTok
 });
 
 export const deployedUrlCondition = createInterceptorCondition<IncludeBearerTokenCondition>({
-  urlPattern: /^(https:\/\/api\.mensa\.jules-labs\.de)(\/ratings\/user.*|\/user\/mensa.*)?$/i,
+  urlPattern: /^(https:\/\/api\.mensa-rater\.de)(\/ratings\/user.*|\/user\/mensa.*)?$/i,
   bearerPrefix: 'Bearer'
 });
