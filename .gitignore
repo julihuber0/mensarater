@@ -4,3 +4,5 @@
 *.ipr
 .vscode/
 .DS_Store
+
+logs

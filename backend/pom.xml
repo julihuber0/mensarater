@@ -173,7 +173,7 @@
 							<goal>test</goal>
 						</goals>
 						<configuration>
-							<argLine>${surefireArgLine}</argLine>
+							<argLine>${surefireArgLine} -Dspring.profiles.active=test</argLine>
 						</configuration>
 					</execution>
 				</executions>
@@ -209,6 +209,26 @@
 					</execution>
 				</executions>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>checkstyle</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 </project>

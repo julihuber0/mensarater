@@ -29,7 +29,7 @@ export class SettingsDialogComponent implements OnInit{
 
   availableMensas: MensaModel[] = [];
 
-  settingsForm: FormGroup<SettingsForm> = new FormGroup({
+  settingsForm: FormGroup<SettingsForm> = new FormGroup<SettingsForm>({
     mensa: new FormControl<MensaModel | undefined>(undefined, { nonNullable: true, validators: [Validators.required] }),
   })
 

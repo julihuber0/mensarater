@@ -168,7 +168,7 @@ export class OverviewComponent implements OnInit {
         if (Array.isArray(parsed)) {
           this.activeFilter.set(parsed);
         }
-      } catch (e) {
+      } catch (_) {
         // ignore parse errors and keep default
         this.activeFilter.set([]);
       }
@@ -180,7 +180,7 @@ export class OverviewComponent implements OnInit {
   private saveFiltersToLocalStorage() {
     try {
       localStorage.setItem(this.FILTER_STORAGE_KEY + this.selectedMensa?.openMensaId || '', JSON.stringify(this.activeFilter() || []));
-    } catch (e) {
+    } catch (_) {
       // ignore storage errors
     }
   }

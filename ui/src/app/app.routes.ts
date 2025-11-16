@@ -1,5 +1,4 @@
-import {RouterModule, Routes} from '@angular/router';
-import {NgModule} from "@angular/core";
+import {Routes} from '@angular/router';
 import {canRate} from "./guards/authentication.guard";
 
 export const routes: Routes = [
@@ -20,9 +19,3 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/overview/overview.component').then(c => c.OverviewComponent)
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}

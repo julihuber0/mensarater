@@ -3,12 +3,17 @@ import {MensaService} from "./service/mensa.service";
 import {lastValueFrom} from "rxjs";
 import {AuthService} from "./service/auth.service";
 import {MensaModel} from "./dto/mensa.model";
+import {RouterModule} from "@angular/router";
+import {HeaderComponent} from "./pages/header/header.component";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
+    imports: [
+      RouterModule,
+      HeaderComponent
+    ],
     styleUrl: './app.component.scss',
-    standalone: false
 })
 export class AppComponent implements OnInit {
   private mensaService: MensaService = inject(MensaService);
