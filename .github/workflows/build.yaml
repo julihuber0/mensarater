@@ -65,9 +65,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-frontend, build-and-push-backend]
     steps:
-      - name: Create Google service account key file and firebase config
+      - name: Create firebase config
         run: |
-          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}' > service-account-key.json
           mkdir firebase
           echo '${{ vars.FIREBASE_CONFIG }}' > firebase/firebase.json
 
@@ -82,5 +81,5 @@ jobs:
         with:
           args: deploy --project mensarater
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: service-account-key.json
+          GCP_SA_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
           PROJECT_PATH: firebase
