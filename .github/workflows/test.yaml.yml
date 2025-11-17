@@ -8,6 +8,9 @@ on:
 jobs:
   frontend-unit-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ui
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -31,6 +34,9 @@ jobs:
 
   backend-unit-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
