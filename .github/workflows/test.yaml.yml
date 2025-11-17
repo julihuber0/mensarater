@@ -2,12 +2,15 @@ name: Execute frontend and backend tests
 on:
   pull_request:
     paths:
-      - 'frontend/**'
+      - 'ui/**'
       - 'backend/**'
 
 jobs:
   frontend-unit-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ui
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -27,10 +30,13 @@ jobs:
         run: npm run lint
 
       - name: Run frontend unit tests
-        run: npm run test:unit
+        run: npm run test:cov
 
   backend-unit-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5

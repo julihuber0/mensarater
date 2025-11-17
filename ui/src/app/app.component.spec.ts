@@ -2,8 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import {provideHttpClient} from "@angular/common/http";
 import {provideHttpClientTesting} from "@angular/common/http/testing";
-import {HeaderComponent} from "./pages/header/header.component";
-import {RouterModule} from "@angular/router";
 import {
   provideKeycloak,
   ProvideKeycloakOptions
@@ -20,9 +18,8 @@ const keycloakConfigTesting: ProvideKeycloakOptions = {
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent, RouterModule.forRoot([])],
+      imports: [AppComponent],
       providers: [provideHttpClient(), provideHttpClientTesting(), provideKeycloak(keycloakConfigTesting)],
-      declarations: [AppComponent]
     }).compileComponents();
   });
 
