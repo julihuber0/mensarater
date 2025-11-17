@@ -2,7 +2,7 @@ name: Execute frontend and backend tests
 on:
   pull_request:
     paths:
-      - 'frontend/**'
+      - 'ui/**'
       - 'backend/**'
 
 jobs:
