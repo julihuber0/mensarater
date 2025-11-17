@@ -30,7 +30,7 @@ jobs:
         run: npm run lint
 
       - name: Run frontend unit tests
-        run: npm run test:unit
+        run: npm run test:cov
 
   backend-unit-test:
     runs-on: ubuntu-latest
