@@ -2,7 +2,7 @@ target "backend" {
   context = "./backend"
     dockerfile = "Dockerfile"
     tags = [
-      "itzthedockerjules/mensarater:backend-${VERSION}",
+      "itzthedockerjules/mensarater:backend-${RELEASE_TAG}",
       "itzthedockerjules/mensarater:backend-latest",
     ]
     platforms = [
@@ -15,7 +15,7 @@ target "frontend" {
   context = "./ui"
     dockerfile = "Dockerfile"
     tags = [
-      "itzthedockerjules/mensarater:frontend-${VERSION}",
+      "itzthedockerjules/mensarater:frontend-${RELEASE_TAG}",
       "itzthedockerjules/mensarater:frontend-latest",
     ]
     platforms = [
@@ -24,7 +24,7 @@ target "frontend" {
     ]
 }
 
-variable "VERSION" {
+variable "RELEASE_TAG" {
   type    = string
   default = "v1.0.0"
 }
