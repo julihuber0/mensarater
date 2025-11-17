@@ -25,9 +25,9 @@
     <span>Verfügbare Kategorien:</span>
     <mat-chip-set>
       @for (category of allCategories(); track category) {
-        <mat-chip (click)="$event.stopPropagation(); addFilter(category)">
+        <mat-chip-row (click)="$event.stopPropagation(); addFilter(category)">
           {{ category }}
-        </mat-chip>
+        </mat-chip-row>
       }
     </mat-chip-set>
   </div>
