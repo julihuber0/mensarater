@@ -1,5 +1,5 @@
 <mat-toolbar class="header-toolbar">
-  <div class="logo-container">
+  <div class="logo-container" (click)="goToOverview()" (keyup)="goToOverview()" tabindex="0">
     @if (!darkModeToggled) {
       <img src="assets/icons/logo_light.svg" alt="logo_light" class="header-logo"/>
     } @else {

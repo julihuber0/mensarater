@@ -1,11 +1,12 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
 import {provideHttpClient} from "@angular/common/http";
 import {provideHttpClientTesting} from "@angular/common/http/testing";
 import {
   provideKeycloak,
   ProvideKeycloakOptions
 } from "keycloak-angular";
+import {ActivatedRoute} from "@angular/router";
 
 const keycloakConfigTesting: ProvideKeycloakOptions = {
   config: {
@@ -16,10 +17,17 @@ const keycloakConfigTesting: ProvideKeycloakOptions = {
 }
 
 describe('AppComponent', () => {
+
+  const mockActivatedRoute: jasmine.SpyObj<any> = jasmine.createSpyObj('ActivatedRoute', ['']);
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [provideHttpClient(), provideHttpClientTesting(), provideKeycloak(keycloakConfigTesting)],
+      providers: [provideHttpClient(),
+        provideHttpClientTesting(),
+        provideKeycloak(keycloakConfigTesting),
+        {provide: ActivatedRoute, useValue: mockActivatedRoute}
+      ],
     }).compileComponents();
   });
 
