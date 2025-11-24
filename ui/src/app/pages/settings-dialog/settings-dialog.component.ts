@@ -35,7 +35,10 @@ export class SettingsDialogComponent implements OnInit{
 
   async ngOnInit() {
     this.availableMensas = await lastValueFrom(this.mensaService.getAllMensas());
-    const mensa = this.availableMensas.find(m => m.openMensaId === this.openMensaId);
+    let mensa = this.availableMensas.find(m => m.openMensaId === this.openMensaId);
+    if (!mensa) {
+      mensa = this.availableMensas[0];
+    }
     this.settingsForm = this.formBuilder.group({
       mensa: new FormControl<MensaModel | undefined>(mensa, {nonNullable: true, validators: [Validators.required]}),
     });

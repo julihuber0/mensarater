@@ -7,6 +7,7 @@ import {MatButtonModule} from "@angular/material/button";
 
 import {FormsModule} from "@angular/forms";
 import {MatChipsModule} from "@angular/material/chips";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ import {MatChipsModule} from "@angular/material/chips";
 export class HeaderComponent {
 
   public readonly authService: AuthService = inject(AuthService);
+  private readonly router: Router = inject(Router);
   private document = inject(DOCUMENT);
 
   currentMode: 'light' | 'dark';
@@ -38,6 +40,10 @@ export class HeaderComponent {
       this.currentMode = 'light';
       this.darkModeToggled = false;
     }
+  }
+
+  goToOverview() {
+    this.router.navigate(['/']);
   }
 
   onToggleDarkMode() {
