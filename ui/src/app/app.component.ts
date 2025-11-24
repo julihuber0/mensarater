@@ -5,13 +5,15 @@ import {AuthService} from "./service/auth.service";
 import {MensaModel} from "./dto/mensa.model";
 import {RouterModule} from "@angular/router";
 import {HeaderComponent} from "./pages/header/header.component";
+import {FooterComponent} from "./components/footer/footer.component";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     imports: [
       RouterModule,
-      HeaderComponent
+      HeaderComponent,
+      FooterComponent
     ],
     styleUrl: './app.component.scss',
 })
