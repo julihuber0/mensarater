@@ -20,8 +20,11 @@ public class OpenMensaApiService implements MensaService {
 
     private final WebClient webClient;
 
+    private final OtherMensaService otherMensaService;
+
     public OpenMensaApiService(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl("https://openmensa.org/api/v2").build();
+        this.otherMensaService = new OtherMensaService(webClientBuilder);
     }
 
     @Override
@@ -42,6 +45,7 @@ public class OpenMensaApiService implements MensaService {
 
     private List<OpenMensaDishModel> fetchMensaDishesForDay(long mensaId, Date date) {
         String dateString = String.format("%tY-%<tm-%<td", date);
+        if (mensaId < 0) return otherMensaService.fetchMensaDishesForDay(mensaId, date);
         return webClient.get()
                 .uri("/canteens/{mensaId}/days/{date}/meals", mensaId, dateString)
                 .retrieve()

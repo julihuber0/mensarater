@@ -15,6 +15,6 @@ public record OpenMensaDishModel(String name, String category,
         return dishDTO;
     }
 
-    private record Prices(double students, double employees, double others) {
+    public record Prices(double students, double employees, double others) {
     }
 }
