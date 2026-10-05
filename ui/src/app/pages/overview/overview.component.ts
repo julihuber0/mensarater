@@ -1,4 +1,4 @@
-import {Component, computed, inject, OnInit, Signal, signal, WritableSignal} from '@angular/core';
+import {Component, computed, inject, OnInit, Signal, signal, WritableSignal, ChangeDetectionStrategy} from '@angular/core';
 import {DishService} from "../../service/dish.service";
 import {DishModel} from "../../dto/dish.model";
 import {MatDialog} from "@angular/material/dialog";
@@ -27,6 +27,7 @@ import {MatDividerModule} from "@angular/material/divider";
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   imports: [MatIconModule, MatProgressBarModule, MatButtonModule, DishCardComponent, MatCardModule, MatButtonToggleModule, FormsModule, SkeletonCardComponent, DatePipe, MatMenuModule, MatChipsModule, MatBadgeModule, MatSelectModule, MatDividerModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './overview.component.scss',
 })
 export class OverviewComponent implements OnInit {

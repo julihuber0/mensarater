@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { MensaService } from './mensa.service';
-import {provideHttpClient} from "@angular/common/http";
+import {provideHttpClient, withXhr} from "@angular/common/http";
 import {provideHttpClientTesting} from "@angular/common/http/testing";
 
 describe('MensaService', () => {
@@ -10,7 +10,7 @@ describe('MensaService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideHttpClient(),
+        provideHttpClient(withXhr()),
         provideHttpClientTesting()
       ]
     });

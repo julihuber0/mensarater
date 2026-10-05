@@ -1,5 +1,5 @@
 import {ApplicationConfig, LOCALE_ID, provideZonelessChangeDetection} from "@angular/core";
-import {provideHttpClient, withInterceptors} from "@angular/common/http";
+import {provideHttpClient, withInterceptors, withXhr} from "@angular/common/http";
 import {
   INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
   includeBearerTokenInterceptor,
@@ -14,7 +14,7 @@ import {provideHotToastConfig} from "@ngxpert/hot-toast";
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZonelessChangeDetection(),
-    provideHttpClient(withInterceptors([includeBearerTokenInterceptor])),
+    provideHttpClient(withXhr(), withInterceptors([includeBearerTokenInterceptor])),
     {
       provide: INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
       useValue: [localhostUrlCondition, deployedUrlCondition]

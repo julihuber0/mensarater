@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {MensaService} from "./service/mensa.service";
 import {lastValueFrom} from "rxjs";
 import {AuthService} from "./service/auth.service";
@@ -15,6 +15,7 @@ import {FooterComponent} from "./pages/footer/footer.component";
       HeaderComponent,
       FooterComponent
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {

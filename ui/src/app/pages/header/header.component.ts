@@ -1,4 +1,4 @@
-import {Component, inject, DOCUMENT} from '@angular/core';
+import {Component, inject, DOCUMENT, ChangeDetectionStrategy} from '@angular/core';
 import {AuthService} from "../../service/auth.service";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatMenuModule} from "@angular/material/menu";
@@ -13,6 +13,7 @@ import {Router} from "@angular/router";
   selector: 'app-header',
   templateUrl: './header.component.html',
   imports: [MatToolbarModule, MatMenuModule, MatIconModule, MatButtonModule, FormsModule, MatChipsModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {

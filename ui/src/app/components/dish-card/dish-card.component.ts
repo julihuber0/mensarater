@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
 import {MatCardModule} from "@angular/material/card";
 import {DishModel} from "../../dto/dish.model";
 import {MatButton} from "@angular/material/button";
@@ -18,6 +18,7 @@ import {NgClass} from "@angular/common";
     NgClass,
   ],
   templateUrl: './dish-card.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './dish-card.component.scss'
 })
 export class DishCardComponent {

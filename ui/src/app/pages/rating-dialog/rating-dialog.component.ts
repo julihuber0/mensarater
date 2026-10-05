@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {DishModel} from "../../dto/dish.model";
 import {DishService} from "../../service/dish.service";
@@ -13,6 +13,7 @@ import {MatCardModule} from "@angular/material/card";
   selector: 'app-rating-dialog',
   templateUrl: './rating-dialog.component.html',
   imports: [MatDialogModule, ReactiveFormsModule, MatFormFieldModule, MatSliderModule, MatCheckboxModule, MatButtonModule, MatCardModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './rating-dialog.component.scss',
 })
 export class RatingDialogComponent implements OnInit {

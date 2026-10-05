@@ -1,4 +1,4 @@
-import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
+import {Component, inject, OnInit, signal, WritableSignal, ChangeDetectionStrategy} from '@angular/core';
 import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -16,6 +16,7 @@ interface SettingsForm {
   selector: 'app-settings-dialog',
   imports: [MatDialogModule, ReactiveFormsModule, MatFormFieldModule, MatSelectModule, MatButton],
   templateUrl: './settings-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './settings-dialog.component.scss'
 })
 export class SettingsDialogComponent implements OnInit{
