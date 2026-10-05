@@ -1,7 +1,7 @@
-@if (selectedMensa) {
+@if (selectedMensa(); as mensa) {
 <mat-card class="collect-card">
   <div class="mensa-display">
-    <h2>{{ selectedMensa.name }}</h2>
+    <h2>{{ mensa.name }}</h2>
       <button mat-raised-button (click)="openSettingsDialog()">Ändern</button>
   </div>
 </mat-card>
@@ -74,7 +74,7 @@
     </mat-button-toggle-group>
   </div>
 <div class="dish-layout">
-  @if (!loading) {
+  @if (!loading()) {
     @for (dish of filteredMenuData(); track dish.dishName) {
       <div class="dish-card">
         <app-dish-card [dish]="dish" [canRate]="authService.loggedIn" (rateButtonEmitter)="onClickDish($event)"></app-dish-card>

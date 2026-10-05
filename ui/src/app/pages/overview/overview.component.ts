@@ -46,7 +46,7 @@ export class OverviewComponent implements OnInit {
     }
     return menu.filter(d => activeFilter.includes(d.category));
   });
-  selectedMensa: MensaModel | undefined;
+  selectedMensa: WritableSignal<MensaModel | undefined> = signal<MensaModel | undefined>(undefined);
   selectedDate: WritableSignal<Date> = signal<Date>(new Date());
   allCategories: Signal<string[]> = computed(() => {
     const menu = this.menuData();
@@ -59,14 +59,14 @@ export class OverviewComponent implements OnInit {
 
   private readonly FILTER_STORAGE_KEY = 'mensarater_filters_';
 
-  loading: boolean = false;
+  loading: WritableSignal<boolean> = signal<boolean>(false);
 
   rateMode: 'avg' | 'user' = 'avg';
 
   async ngOnInit() {
     this.mensaService.getSelectedMensaSubject().subscribe(mensa => {
       if (mensa) {
-        this.selectedMensa = mensa;
+        this.selectedMensa.set(mensa);
         this.loadFiltersFromLocalStorage();
         this.getTableData();
       } else {
@@ -85,7 +85,7 @@ export class OverviewComponent implements OnInit {
         backdropClass: 'dialog-background',
       }
     );
-    dialogRef.componentInstance.openMensaId = this.selectedMensa?.openMensaId;
+    dialogRef.componentInstance.openMensaId = this.selectedMensa()?.openMensaId;
     const updatedMensa = await lastValueFrom(dialogRef.afterClosed());
     if (updatedMensa) {
       await this.saveSelectedMensa(updatedMensa);
@@ -112,7 +112,7 @@ export class OverviewComponent implements OnInit {
   }
 
   onClickDish(dish: DishModel) {
-    if (this.selectedMensa) {
+    if (this.selectedMensa()) {
       const dialogRef = this.dialog.open(
         RatingDialogComponent,
         {
@@ -127,15 +127,16 @@ export class OverviewComponent implements OnInit {
   }
 
   async getTableData() {
-    if (this.selectedMensa) {
-      this.loading = true;
+    const selectedMensa = this.selectedMensa();
+    if (selectedMensa) {
+      this.loading.set(true);
       if (this.rateMode === 'avg') {
-        this.dishService.getAverageDishRating(this.selectedMensa.openMensaId, this.selectedDate()).subscribe({
+        this.dishService.getAverageDishRating(selectedMensa.openMensaId, this.selectedDate()).subscribe({
           next: dishes => {
             this.menuData.set(dishes);
           },
           complete: () => {
-            this.loading = false;
+            this.loading.set(false);
           }
         });
       } else {
@@ -144,7 +145,7 @@ export class OverviewComponent implements OnInit {
             this.menuData.set(dishes)
           },
           complete: () => {
-            this.loading = false;
+            this.loading.set(false);
           }
         })
       }
@@ -161,7 +162,7 @@ export class OverviewComponent implements OnInit {
 
   // LocalStorage helpers
   private loadFiltersFromLocalStorage() {
-    const raw = localStorage.getItem(this.FILTER_STORAGE_KEY + this.selectedMensa?.openMensaId || '');
+    const raw = localStorage.getItem(this.FILTER_STORAGE_KEY + this.selectedMensa()?.openMensaId || '');
     if (raw) {
       try {
         const parsed = JSON.parse(raw);
@@ -179,7 +180,7 @@ export class OverviewComponent implements OnInit {
 
   private saveFiltersToLocalStorage() {
     try {
-      localStorage.setItem(this.FILTER_STORAGE_KEY + this.selectedMensa?.openMensaId || '', JSON.stringify(this.activeFilter() || []));
+      localStorage.setItem(this.FILTER_STORAGE_KEY + this.selectedMensa()?.openMensaId || '', JSON.stringify(this.activeFilter() || []));
     } catch (_) {
       // ignore storage errors
     }

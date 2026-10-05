@@ -1,4 +1,4 @@
-import {ApplicationConfig, LOCALE_ID} from "@angular/core";
+import {ApplicationConfig, LOCALE_ID, provideZonelessChangeDetection} from "@angular/core";
 import {provideHttpClient, withInterceptors} from "@angular/common/http";
 import {
   INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
@@ -13,6 +13,7 @@ import {provideToastr} from "ngx-toastr";
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideZonelessChangeDetection(),
     provideHttpClient(withInterceptors([includeBearerTokenInterceptor])),
     {
       provide: INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,

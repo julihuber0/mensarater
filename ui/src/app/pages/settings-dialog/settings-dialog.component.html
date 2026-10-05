@@ -5,7 +5,7 @@
       <mat-form-field appearance="outline" class="select-field">
         <mat-label>Mensa-Auswahl</mat-label>
         <mat-select formControlName="mensa">
-          @for (mensa of availableMensas; track $index) {
+          @for (mensa of availableMensas(); track $index) {
             <mat-option [value]="mensa">{{ mensa.name }}</mat-option>
           }
         </mat-select>
