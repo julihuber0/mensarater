@@ -18,7 +18,7 @@ const keycloakConfigTesting: ProvideKeycloakOptions = {
 
 describe('AppComponent', () => {
 
-  const mockActivatedRoute: jasmine.SpyObj<any> = jasmine.createSpyObj('ActivatedRoute', ['']);
+  const mockActivatedRoute = {};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

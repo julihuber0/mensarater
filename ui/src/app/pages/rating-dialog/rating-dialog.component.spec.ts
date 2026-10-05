@@ -8,7 +8,7 @@ describe('RatingDialogComponent', () => {
   let component: RatingDialogComponent;
   let fixture: ComponentFixture<RatingDialogComponent>;
 
-  let dishServiceMock: jasmine.SpyObj<DishService> = jasmine.createSpyObj('DishService', ['saveDishRating']);
+  let dishServiceMock = {saveDishRating: vi.fn()};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

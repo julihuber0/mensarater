@@ -8,8 +8,8 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
-  const mockAuthService: jasmine.SpyObj<AuthService> = jasmine.createSpyObj('AuthService', ['login', 'logout']);
-  const mockRouter: jasmine.SpyObj<any> = jasmine.createSpyObj('Router', ['navigate']);
+  const mockAuthService = {login: vi.fn(), logout: vi.fn()};
+  const mockRouter = {navigate: vi.fn()};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

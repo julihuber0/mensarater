@@ -3,13 +3,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SettingsDialogComponent } from './settings-dialog.component';
 import {MensaService} from "../../service/mensa.service";
 import {MatDialogRef} from "@angular/material/dialog";
+import {of} from "rxjs";
 
 describe('SettingsDialogComponent', () => {
   let component: SettingsDialogComponent;
   let fixture: ComponentFixture<SettingsDialogComponent>;
 
-  let mockMensaService: jasmine.SpyObj<MensaService> = jasmine.createSpyObj('MensaService', ['getMensaOfUser']);
-  let mockDialogRef: jasmine.SpyObj<any> = jasmine.createSpyObj('MatDialogRef', ['close']);
+  let mockMensaService = {getAllMensas: vi.fn(() => of([]))};
+  let mockDialogRef = {close: vi.fn()};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

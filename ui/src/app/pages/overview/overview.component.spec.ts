@@ -6,15 +6,16 @@ import {MatDialog} from "@angular/material/dialog";
 import {DishService} from "../../service/dish.service";
 import {MensaService} from "../../service/mensa.service";
 import {AuthService} from "../../service/auth.service";
+import {EMPTY} from "rxjs";
 
 describe('OverviewComponent', () => {
   let component: OverviewComponent;
   let fixture: ComponentFixture<OverviewComponent>;
 
-  let mockMatDialog: jasmine.SpyObj<MatDialog> = jasmine.createSpyObj('MatDialog', ['open']);
-  let mockDishService: jasmine.SpyObj<DishService> = jasmine.createSpyObj('DishService', ['getDishes']);
-  let mockMensaService: jasmine.SpyObj<MensaService> = jasmine.createSpyObj('MensaService', ['getMensaOfUser']);
-  let mockAuthService: jasmine.SpyObj<AuthService> = jasmine.createSpyObj('AuthService', ['login']);
+  let mockMatDialog = {open: vi.fn()};
+  let mockDishService = {getDishes: vi.fn()};
+  let mockMensaService = {getSelectedMensaSubject: vi.fn(() => EMPTY)};
+  let mockAuthService = {login: vi.fn()};
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
