@@ -9,7 +9,7 @@ import {deployedUrlCondition, localhostUrlCondition} from "./config/url-conditio
 import {keycloakConfig} from "./config/keycloak-init.factory";
 import {provideRouter} from "@angular/router";
 import {routes} from "./app.routes";
-import {provideToastr} from "ngx-toastr";
+import {provideHotToastConfig} from "@ngxpert/hot-toast";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,9 +25,9 @@ export const appConfig: ApplicationConfig = {
     },
     provideKeycloak(keycloakConfig),
     provideRouter(routes),
-    provideToastr(
+    provideHotToastConfig(
       {
-        positionClass: "toast-top-center"
+        position: "top-center"
       }
     )
   ],

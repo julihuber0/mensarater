@@ -29,8 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/styles/tokens.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "src/styles/tokens.scss"
             ],
             "scripts": []
           },
